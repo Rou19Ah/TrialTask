@@ -2,6 +2,7 @@ using DB_Table;
 using PerformOperation;
 using Program_Operation;
 using Update_DB;
+using static DB_Table.DB_Lasers;
 
 /// <summary>
 /// this part could have been done with Moq framework also but it would add complexity to project and unit test and make it harder to read
@@ -14,7 +15,7 @@ namespace Unit.Tests
     [TestClass]
     public class UpdateDatabaseTests
     {
-        private List<Laser> testData;
+        private List<Laser>? testData;
 
         /// <summary>
         /// Test initialization method for copying data
@@ -24,6 +25,7 @@ namespace Unit.Tests
         {
             using (var context = new DB_Lasers())
             {
+                context.Database.EnsureCreated();
                 testData = context.Lasers.ToList();
             }
         }
@@ -51,6 +53,9 @@ namespace Unit.Tests
 
                 Assert.AreEqual(expectedNumberOfWelds, actualNumberOfTriggeredWelds);
                 Assert.AreEqual(expectedConsumedEnergy, actualConsumedEnergy, 0.1m);
+
+                Console.WriteLine($"Expected NumberOfWelds: {expectedNumberOfWelds}, Actual NumberOfWelds: {actualNumberOfTriggeredWelds}");
+                Console.WriteLine($"Expected ConsumedEnergy: {expectedConsumedEnergy}, Actual ConsumedEnergy: {actualConsumedEnergy}");
             }
         }
     }
@@ -61,7 +66,7 @@ namespace Unit.Tests
     [TestClass]
     public class DisplayDatabaseTests
     {
-        private List<Laser> testData;
+        private List<Laser>? testData;
 
         /// <summary>
         /// Test initialization method for copying data
@@ -71,9 +76,11 @@ namespace Unit.Tests
         {
             using (var context = new DB_Lasers())
             {
+                context.Database.EnsureCreated();
                 testData = context.Lasers.ToList();
             }
         }
+
 
         /// <summary>
         /// Test method for displaying the list
@@ -82,10 +89,12 @@ namespace Unit.Tests
         public void DisplayList()
         {
             // Arrange
-            var Display = new LaserDataRetriever();
+            var Di = new LaserDataRetriever();
 
             // Act
-            Display.RetrieveAndPrintLaserData();
+            Di.RetrieveAndPrintLaserData();
+
+
 
             // Assert
             string expectedString = "";
@@ -99,13 +108,14 @@ namespace Unit.Tests
                                   $" ,ConsumedEnergy: {laser.ConsumedEnergy}" + "\n";
             }
 
-            String actualString = Display.Display;
+            String actualString = Di.Display;
 
             // Normalize String Value
             expectedString = expectedString.Trim();
             actualString = actualString.Trim();
-
             Assert.AreEqual(expectedString, actualString);
+
+            Console.WriteLine($"Expected : {expectedString}, Actual : {actualString}");
         }
     }
 
@@ -117,7 +127,7 @@ namespace Unit.Tests
     {
         private decimal expectedConsumedEnergy, actualConsumedEnergy;
         private int expectedNumberOfWelds, actualNumberOfWelds;
-        private List<Laser> testData;
+        private List<Laser>? testData;
 
         /// <summary>
         /// Test initialization method for copying data
@@ -127,9 +137,11 @@ namespace Unit.Tests
         {
             using (var context = new DB_Lasers())
             {
+                context.Database.EnsureCreated();
                 testData = context.Lasers.ToList();
             }
         }
+
 
         /// <summary>
         /// Test method for the operation
@@ -140,7 +152,8 @@ namespace Unit.Tests
             // Arrange
             var Ope = new LaserDataRetriever();
             int li = 2;
-            expectedNumberOfWelds = 1 + testData.First(l => l.LaserID == li).NumberOfTriggeredWelds;
+            expectedNumberOfWelds = testData.First(l => l.LaserID == li).NumberOfTriggeredWelds;
+            expectedNumberOfWelds += 1;
 
             // Act
             Ope.Userchoice = li;
@@ -153,6 +166,9 @@ namespace Unit.Tests
 
             Assert.AreEqual(expectedConsumedEnergy, actualConsumedEnergy);
             Assert.AreEqual(expectedNumberOfWelds, actualNumberOfWelds);
+
+            Console.WriteLine($"Expected NumberOfWelds: {expectedNumberOfWelds}, Actual NumberOfWelds: {actualNumberOfWelds}");
+            Console.WriteLine($"Expected ConsumedEnergy: {expectedConsumedEnergy}, Actual ConsumedEnergy: {actualConsumedEnergy}");
         }
     }
 }

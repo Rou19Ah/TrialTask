@@ -1,9 +1,9 @@
-﻿using Options_Choice;
+﻿using DB_Table;
+using Options_Choice;
 
 /// <summary>
 /// Represents the entry point for the application.
-/// Inside optionsBuilder.UseSqlServer() must be filled with the Connection String of Connected Database before Running the App.
-/// Please Replace it with your own Connection String.
+/// Sqlite added so no more DB problem although unit test actually acted weird and still acting a little bit weird
 /// </summary>
 class Program
 {
@@ -17,6 +17,18 @@ class Program
     /// </summary>
     public static void Main()
     {
+
+        using (var context = new DB_Lasers())
+        {
+            context.Database.EnsureCreated();
+            // Check if the table is empty
+            if (!context.Lasers.Any())
+            {
+                // if empty calling the method initial data
+                context.InsertInitialData();
+                Console.WriteLine("Data inserted successfully.");
+            }
+        }
         // Set UnitTest flag to false when running the main program.
         UnitTest = false;
 

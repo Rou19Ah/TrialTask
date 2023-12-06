@@ -12,13 +12,14 @@ namespace Program_Operation
         public string Display = "";
         public int Userchoice;
         private bool reset;
-        private bool isInt;
 
         /// <summary>
         /// Retrieves all laser data from the database and prints it to the console.
         /// </summary>
         public void RetrieveAndPrintLaserData()
         {
+            Display = "";
+
             Start Back = new Start();
             using (var db_data = new DB_Lasers())
             {
@@ -32,10 +33,9 @@ namespace Program_Operation
                         $" ,MaximumWeldingDuration: {laser.MaximumWeldingDuration}" + "\n" +
                         $" ,NumberOfTriggeredWelds: {laser.NumberOfTriggeredWelds}" + "\n" +
                         $" ,ConsumedEnergy: {laser.ConsumedEnergy}";
-
-                    Console.WriteLine(Display);
                 }
-                while (!Program.UnitTest)
+                Console.WriteLine(Display);
+                if (!Program.UnitTest)
                 {
                     Back.Options();
                 }
@@ -56,15 +56,17 @@ namespace Program_Operation
             do
             {
                 /// Just a loop to bypass isInt in case on unit test
+                bool isInt;
                 if (Program.UnitTest == false)
                 {
                     string userInput = Console.ReadLine();
-                    bool isInt = int.TryParse(userInput, out Userchoice);
+                    isInt = int.TryParse(userInput, out Userchoice);
                 }
                 else
                 {
                     isInt = true;
                 }
+
 
                 /// A loop in case of number out of range or character and requesting for input
                 if (isInt)

@@ -26,19 +26,26 @@ namespace Options_Choice
                 /// try() catch for case that user input is out of range
                 try
                 {
-                    int result = int.Parse(Console.ReadLine());
-                    reset = false;
-                    if (result == 1)
+                    if (int.TryParse(Console.ReadLine(), out int result))
                     {
-                        Lasers_list.RetrieveAndPrintLaserData();
-                    }
-                    else if (result == 2)
-                    {
-                        Lasers_list.PerformOperation();
+                        reset = false;
+                        if (result == 1)
+                        {
+                            Lasers_list.RetrieveAndPrintLaserData();
+                        }
+                        else if (result == 2)
+                        {
+                            Lasers_list.PerformOperation();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid choice. Please enter 1 or 2.");
+                            reset = true;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Invalid choice. Please enter 1 or 2.");
+                        Console.WriteLine("Invalid input. Please enter a valid number.");
                         reset = true;
                     }
                 }

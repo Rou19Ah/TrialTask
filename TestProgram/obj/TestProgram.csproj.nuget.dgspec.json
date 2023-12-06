@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\TestProgram\\TestProgram.csproj": {}
+    "C:\\Users\\Erwin\\source\\repos\\TrialTask\\TestProgram\\TestProgram.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\Program(Main).csproj": {
+    "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\Program(Main).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\Program(Main).csproj",
+        "projectUniqueName": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\Program(Main).csproj",
         "projectName": "Program(Main)",
-        "projectPath": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\Program(Main).csproj",
+        "projectPath": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\Program(Main).csproj",
         "packagesPath": "C:\\Users\\Erwin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\obj\\",
+        "outputPath": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,6 +51,20 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -73,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\TestProgram\\TestProgram.csproj": {
+    "C:\\Users\\Erwin\\source\\repos\\TrialTask\\TestProgram\\TestProgram.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\TestProgram\\TestProgram.csproj",
+        "projectUniqueName": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\TestProgram\\TestProgram.csproj",
         "projectName": "TestProgram",
-        "projectPath": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\TestProgram\\TestProgram.csproj",
+        "projectPath": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\TestProgram\\TestProgram.csproj",
         "packagesPath": "C:\\Users\\Erwin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\TestProgram\\obj\\",
+        "outputPath": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\TestProgram\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -101,8 +115,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\Program(Main).csproj": {
-                "projectPath": "C:\\Users\\Erwin\\Source\\Repos\\TrialTask\\Program(Main)\\Program(Main).csproj"
+              "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\Program(Main).csproj": {
+                "projectPath": "C:\\Users\\Erwin\\source\\repos\\TrialTask\\Program(Main)\\Program(Main).csproj"
               }
             }
           }
