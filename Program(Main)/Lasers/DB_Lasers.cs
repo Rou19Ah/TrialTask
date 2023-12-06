@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.IO;
-using System.Linq;
 
 namespace DB_Table
 {
@@ -10,19 +7,17 @@ namespace DB_Table
     /// </summary>
     public class DB_Lasers : DbContext
     {
-        private DbSet<Laser> lasers;
-
         /// <summary>
         /// Represents the DbSet for the Laser entity in the database.
         /// </summary>
-        public DbSet<Laser> Lasers { get => lasers; set => lasers = value; }
+        public DbSet<Laser> Lasers { get; set; }
         /// <summary>
         /// Configures the database context options, specifying the connection string.
         /// </summary>
         /// <param name="optionsBuilder">The options builder used to configure the context.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Checks and see if the table exist on the diroctery or not if not it makes one with same name also migration file added too
+            // Checks and see if the table exist on the directory or not if not it makes one with same name also migration file added too
             var directory = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine($"Database exist in Base Directory: {directory}");
             optionsBuilder.UseSqlite($"Data Source={directory}LaserList.db");

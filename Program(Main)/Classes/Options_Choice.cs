@@ -17,7 +17,7 @@ namespace Options_Choice
             LaserDataRetriever Lasers_list = new LaserDataRetriever();
             Console.WriteLine("\n1. Displaying the available lasers \n2. Perform a welding \n Choose the desired command by number:");
 
-            /// Varaible only to be able do the loop till user input becomes a number between 1-3
+            /// Variable only to be able do the loop till user input becomes a number between 1-3
             reset = true;
 
             /// do {}(while) loop for case that user input is not a number

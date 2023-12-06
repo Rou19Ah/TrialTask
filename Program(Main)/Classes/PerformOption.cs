@@ -55,8 +55,10 @@ namespace Program_Operation
             /// do {}(while) loop for case that user input is not a number
             do
             {
-                /// Just a loop to bypass isInt in case on unit test
+                /// the loop was stocking
                 bool isInt;
+
+                /// Just a loop to bypass isInt in case on unit test
                 if (Program.UnitTest == false)
                 {
                     string userInput = Console.ReadLine();
